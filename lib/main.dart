@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 
 main() {
-  runApp(Container(
-    child: Center(
+  runApp(const AppWidget(title: "teste"));
+}
+
+class AppWidget extends StatelessWidget {
+  final String title;
+
+  const AppWidget({Key? key, required this.title}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
       child: Text(
-        "123",
+        title,
         textDirection: TextDirection.ltr,
-        style: TextStyle(color: Colors.white, fontSize: 200),
+        style: const TextStyle(color: Colors.white, fontSize: 100),
       ),
-    ),
-  ));
+    );
+  }
 }
