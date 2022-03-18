@@ -17,11 +17,15 @@ class HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Home Page'),
       ),
-      body: Center(
-        child: GestureDetector(
-          child: Text(
-            'contador: $counter',
-            style: TextStyle(fontSize: 25),
+      body: Container(
+        height: 100,
+        width: 100,
+        color: Colors.black,
+        child: Center(
+          child: Container(
+            height: 50,
+            width: 50,
+            color: Colors.red,
           ),
         ),
       ),
@@ -35,3 +39,13 @@ class HomePageState extends State<HomePage> {
     );
   }
 }
+
+
+// Center(
+//         child: GestureDetector(
+//           child: Text(
+//             'contador: $counter',
+//             style: TextStyle(fontSize: 25),
+//           ),
+//         ),
+//       ),
