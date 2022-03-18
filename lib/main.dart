@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 main() {
-  runApp(const AppWidget(title: "teste"));
+  runApp(AppWidget(title: "123"));
 }
 
 class AppWidget extends StatelessWidget {
@@ -11,11 +11,10 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        title,
-        textDirection: TextDirection.ltr,
-        style: const TextStyle(color: Colors.white, fontSize: 100),
+    return MaterialApp(
+      theme: ThemeData.light(),
+      home: Container(
+        child: Center(child: Text("teste")),
       ),
     );
   }
