@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hello_word/app_controller.dart';
-import 'package:hello_word/home_page.dart';
-import 'package:hello_word/login_page.dart';
+import 'package:hello_word/pages/home_page.dart';
+import 'package:hello_word/pages/login_page.dart';
 
-class AppWidget extends StatelessWidget {
+class AppPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(

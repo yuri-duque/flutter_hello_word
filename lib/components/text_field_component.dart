@@ -22,10 +22,20 @@ class CustomTextField extends StatelessWidget {
         onChanged: onChanged,
         decoration: InputDecoration(
           labelText: label,
-          border: const OutlineInputBorder(),
+          enabledBorder: _buildBorder(),
+          focusedBorder: _buildBorder(),
         ),
         obscureText: typePassword,
         keyboardType: keyboardType,
+      ),
+    );
+  }
+
+  OutlineInputBorder _buildBorder() {
+    return const OutlineInputBorder(
+      borderSide: BorderSide(
+        width: 2,
+        color: Colors.white,
       ),
     );
   }

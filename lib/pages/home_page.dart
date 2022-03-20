@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hello_word/app_controller.dart';
-import 'package:hello_word/login_page.dart';
+// import 'package:hello_word/components/switch_component.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -28,7 +28,7 @@ class HomePageState extends State<HomePage> {
           children: [
             Text("Contador: $counter"),
             Container(height: 50),
-            CustomSwitcher(),
+            _buildSwitch(),
             Container(height: 50),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -41,23 +41,27 @@ class HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {},
-      ),
+      floatingActionButton: _buildFloatingButton(),
     );
   }
-}
 
-class CustomSwitcher extends StatelessWidget {
-  const CustomSwitcher({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildSwitch() {
     return Switch(
       value: AppController.instance.isDartTheme,
       onChanged: (value) {
         AppController.instance.changeThema();
+        setState(() {});
+      },
+    );
+  }
+
+  FloatingActionButton _buildFloatingButton() {
+    return FloatingActionButton(
+      child: const Icon(Icons.add),
+      onPressed: () {
+        setState(() {
+          counter++;
+        });
       },
     );
   }
