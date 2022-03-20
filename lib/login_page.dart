@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hello_word/home_page.dart';
 
+import 'components/custom_button_component.dart';
+import 'components/custom_text_field_component.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -12,41 +15,22 @@ class _LoginPageState extends State<LoginPage> {
   String email = "";
   String password = "";
 
+  String imageURL =
+      "https://upload.wikimedia.org/wikipedia/pt/f/f6/Pok%C3%A9mon_GO_logo.png";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: SizedBox(
-          height: MediaQuery.of(context).size.height,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CustomTextField(
-                  label: "Email",
-                  onChanged: (text) {
-                    email = text;
-                  },
-                  keyboardType: TextInputType.emailAddress,
-                ),
-                CustomTextField(
-                  label: "Senha",
-                  onChanged: (text) {
-                    password = text;
-                  },
-                  typePassword: true,
-                ),
-                CustomButton(
-                  text: "Entrar",
-                  onPressed: () {
-                    if (email == "teste@teste.com" && password == "123") {
-                      Navigator.of(context).pushReplacementNamed("/home");
-                    } else {
-                      print("email: $email, password: $password");
-                    }
-                  },
-                )
+                buildLogo(),
+                ...buildForm(),
+                buildButton(),
               ],
             ),
           ),
@@ -54,57 +38,43 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-}
 
-class CustomTextField extends StatelessWidget {
-  final String label;
-  final Function(String) onChanged;
-  final TextInputType keyboardType;
-  final bool typePassword;
-
-  const CustomTextField({
-    Key? key,
-    required this.label,
-    required this.onChanged,
-    this.keyboardType = TextInputType.text,
-    this.typePassword = false,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
+  Widget buildLogo() {
     return Padding(
-      padding: const EdgeInsets.all(8),
-      child: TextField(
-        onChanged: onChanged,
-        decoration: InputDecoration(
-          labelText: label,
-          border: const OutlineInputBorder(),
-        ),
-        obscureText: typePassword,
-        keyboardType: keyboardType,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 72, vertical: 16),
+      child: Image.network(imageURL),
     );
   }
-}
 
-class CustomButton extends StatelessWidget {
-  final String text;
-  final Function() onPressed;
-
-  const CustomButton({Key? key, required this.text, required this.onPressed})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final minWidth = MediaQuery.of(context).size.width;
-
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: ElevatedButton(
-        onPressed: onPressed,
-        child: Text(text),
-        style: ElevatedButton.styleFrom(minimumSize: Size(minWidth, 50)),
+  List<Widget> buildForm() {
+    return [
+      CustomTextField(
+        label: "Email",
+        onChanged: (text) {
+          email = text;
+        },
+        keyboardType: TextInputType.emailAddress,
       ),
+      CustomTextField(
+        label: "Senha",
+        onChanged: (text) {
+          password = text;
+        },
+        typePassword: true,
+      )
+    ];
+  }
+
+  Widget buildButton() {
+    return CustomButton(
+      text: "Entrar",
+      onPressed: () {
+        if (email == "teste@teste.com" && password == "123") {
+          Navigator.of(context).pushReplacementNamed("/home");
+        } else {
+          print("email: $email, password: $password");
+        }
+      },
     );
   }
 }
