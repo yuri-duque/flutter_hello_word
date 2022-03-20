@@ -36,8 +36,7 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _buildLogo(),
-              ..._buildForm(),
-              _buildButton(),
+              _buildForm(),
             ],
           ),
         ),
@@ -66,23 +65,28 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  List<Widget> _buildForm() {
-    return [
-      CustomTextField(
-        label: "Email",
-        onChanged: (text) {
-          email = text;
-        },
-        keyboardType: TextInputType.emailAddress,
+  Widget _buildForm() {
+    return Card(
+      child: Column(
+        children: [
+          CustomTextField(
+            label: "Email",
+            onChanged: (text) {
+              email = text;
+            },
+            keyboardType: TextInputType.emailAddress,
+          ),
+          CustomTextField(
+            label: "Senha",
+            onChanged: (text) {
+              password = text;
+            },
+            typePassword: true,
+          ),
+          _buildButton(),
+        ],
       ),
-      CustomTextField(
-        label: "Senha",
-        onChanged: (text) {
-          password = text;
-        },
-        typePassword: true,
-      )
-    ];
+    );
   }
 
   Widget _buildButton() {
