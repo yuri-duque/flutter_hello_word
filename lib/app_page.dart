@@ -15,8 +15,8 @@ class AppPage extends StatelessWidget {
             brightness: AppController.instance.getThema(),
           ),
           routes: {
-            '/': (context) => const LoginPage(),
-            '/home': (context) => const HomePage(),
+            '/home': (context) => const LoginPage(),
+            '/': (context) => const HomePage(),
           },
         );
       },
