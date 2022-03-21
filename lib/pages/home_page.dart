@@ -20,6 +20,11 @@ class HomePageState extends State<HomePage> {
       drawer: Drawer(
         child: Column(
           children: [
+            UserAccountsDrawerHeader(
+              currentAccountPicture: Image.asset('assets/images/account.jpg'),
+              accountName: Text("Yuri"),
+              accountEmail: Text("teste@teste.com"),
+            ),
             ListTile(
               leading: Icon(Icons.home),
               title: Text("Inicio"),
